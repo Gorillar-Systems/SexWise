@@ -1,8 +1,13 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom'
+import RootNavbar from '../components/navbars/RootNavbar'
 
 const RootLayout = () => {
   return (
-    <div>RootLayout</div>
+    <div>
+        <RootNavbar />
+        <Outlet />
+    </div>
   )
 }
 
