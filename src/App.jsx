@@ -7,6 +7,7 @@ import RootLayout from './layouts/RootLayout'
 import Home from './pages/home'
 import Login from './pages/auth/login'
 import Register from './pages/auth/register'
+import ForgotPassword from './pages/auth/forgot-password'
 
 function App() {
   const router = createBrowserRouter([
@@ -16,7 +17,8 @@ function App() {
       children: [
         {index:true, element:<Home />},
         {path:"auth/login", element:<Login /> },
-        {path:"auth/register", element:<Register />}
+        {path:"auth/register", element:<Register />},
+        {path:"auth/forgot-password", element:<ForgotPassword />}
       ]
     }
   ])
