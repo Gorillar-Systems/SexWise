@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { NAVLINKS } from "../../constants";
 import { useSelector } from "react-redux";
 
@@ -7,6 +7,9 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user } = useSelector((state) => ({ ...state }));
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation()
+
+  const {pathname} = location
 
   const navigate = useNavigate();
   const navbarRef = useRef(null);
@@ -33,7 +36,7 @@ const Navbar = () => {
 
   return (
     <div style={{ height: navbarHeight }} className={`fixed w-full top-0 z-50 ${
-          isScrolled ? "bg-white text-primary-main shadow-md" : "bg-transparent text-white"
+          isScrolled && location.pathname==='/' ? "bg-white text-primary-main shadow-md" : "bg-transparent text-white"
         }`}>
       <nav
         ref={navbarRef}
