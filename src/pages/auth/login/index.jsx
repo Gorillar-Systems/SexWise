@@ -3,8 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { apiLogin } from "../../../services/auth";
-import { FaEye, FaEyeSlash, FaEnvelope, FaLock, FaExclamationCircle } from "react-icons/fa";
-import undrawImage from '../../../assets/images/login1.svg';
+import {
+  FaEye,
+  FaEyeSlash,
+  FaEnvelope,
+  FaLock,
+  FaExclamationCircle,
+} from "react-icons/fa";
+import undrawImage from "../../../assets/images/login1.svg";
 
 const Login = () => {
   const { user } = useSelector((state) => ({ ...state }));
@@ -31,7 +37,7 @@ const Login = () => {
     // Logic to handle login goes here (e.g send credentials to server)
     let data = {};
     const formData = new FormData(e.target);
-    
+
     data.email = formData.get("email");
     data.password = formData.get("password");
 
@@ -46,7 +52,7 @@ const Login = () => {
         });
         if (redirect) {
           navigate(redirect);
-        } else navigate("/adverts");
+        } else navigate("/");
         toast.success(`Welcome back, ${res.data.user.name.split(" ")[0]}! 👋`, {
           position: "top-center",
         });
@@ -80,7 +86,9 @@ const Login = () => {
             <h2 className="text-3xl font-bold text-gray-900 mb-2">
               Welcome back
             </h2>
-            <p className="text-gray-500">Please enter your details to sign in</p>
+            <p className="text-gray-500">
+              Please enter your details to sign in
+            </p>
           </div>
 
           <form onSubmit={handleSubmit} className="mt-8 space-y-6">

@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import { apiSignUp } from "../../../services/auth";
-import undrawImage from '../../../assets/images/login4.png';
+import undrawImage from "../../../assets/images/register.svg";
 
-const Register = () => {
+const RegisterForm = () => {
   const { user } = useSelector((state) => ({ ...state }));
   const [loading, setLoading] = useState(false);
   const [role, setRole] = useState("user");
@@ -20,7 +20,7 @@ const Register = () => {
   const location = useLocation();
 
   useEffect(() => {
-    if (user) navigate(redirect || "/adverts");
+    if (user) navigate(redirect || "/");
   }, [user]);
 
   const params = new URLSearchParams(location.search);
@@ -47,18 +47,12 @@ const Register = () => {
     data.email = formData.get("email");
     data.password = password1;
     data.name = `${firstName} ${lastName}`;
-    if (withVendorRole) {
-      data.businessName = formData.get("businessName");
-      data.businessEmail = formData.get("businessEmail");
-      data.businessPhone = formData.get("businessPhone");
-    }
-    data.role = role;
 
     try {
       setLoading(true);
       const res = await apiSignUp(data);
       if (res.status === 201 || res.status === 200) {
-        window.localStorage.setItem("eventlyUser", JSON.stringify(res.data));
+        window.localStorage.setItem("sexwiseUser", JSON.stringify(res.data));
         dispatch({
           type: "LOGGED_IN_USER",
           payload: res.data.user,
@@ -66,7 +60,7 @@ const Register = () => {
         const params = new URLSearchParams(location.search);
         const redirecteURL = params.get("redirect");
         if (redirecteURL) navigate(redirecteURL);
-        else navigate("/adverts");
+        else navigate("/consultation");
         toast.success(`Welcome ${res.data.user.name.split(" ")[0]}`);
       }
     } catch (error) {
@@ -75,12 +69,6 @@ const Register = () => {
     } finally {
       setLoading(false);
     }
-  };
-
-  const handleRoleChange = (e) => {
-    if (e.target.checked) setRole("vendor");
-    else setRole("user");
-    setWithVendorRole(e.target.checked);
   };
 
   const inputClasses = `
@@ -100,8 +88,10 @@ const Register = () => {
           {/* Left side - Registration Form */}
           <div className="w-full md:w-1/2 max-w-xl bg-white rounded-2xl shadow-xl p-8">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-gray-900">Join Evently</h2>
-              <p className="text-gray-500 mt-2">Create your account to get started</p>
+              <h2 className="text-3xl font-bold text-gray-900">Sign Up</h2>
+              <p className="text-gray-500 mt-2">
+                Create your account to get started
+              </p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -170,7 +160,11 @@ const Register = () => {
                     className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
                     onClick={() => setShowPassword(!showPassword)}
                   >
-                    {showPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
+                    {showPassword ? (
+                      <FaEyeSlash size={20} />
+                    ) : (
+                      <FaEye size={20} />
+                    )}
                   </button>
                 </div>
               </div>
@@ -194,80 +188,25 @@ const Register = () => {
                     className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                   >
-                    {showConfirmPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
+                    {showConfirmPassword ? (
+                      <FaEyeSlash size={20} />
+                    ) : (
+                      <FaEye size={20} />
+                    )}
                   </button>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 py-2">
-                <input
-                  type="checkbox"
-                  id="role"
-                  name="role"
-                  onChange={handleRoleChange}
-                  disabled={loading}
-                  className="w-4 h-4 rounded border-gray-300 text-[#F85339] focus:ring-[#F85339]"
-                />
-                <label htmlFor="role" className="text-gray-700 font-medium">
-                  Register as a vendor
-                </label>
-              </div>
-
-              {withVendorRole && (
-                <div className="space-y-4 border-t border-gray-200 pt-4">
-                  <div>
-                    <label htmlFor="businessName" className={labelClasses}>
-                      Business Name
-                    </label>
-                    <input
-                      className={inputClasses}
-                      id="businessName"
-                      type="text"
-                      placeholder="Your Business Name"
-                      name="businessName"
-                      disabled={loading}
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="businessEmail" className={labelClasses}>
-                      Business Email
-                    </label>
-                    <input
-                      className={inputClasses}
-                      id="businessEmail"
-                      type="email"
-                      placeholder="business@example.com"
-                      name="businessEmail"
-                      disabled={loading}
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="businessPhone" className={labelClasses}>
-                      Business Phone
-                    </label>
-                    <input
-                      className={inputClasses}
-                      id="businessPhone"
-                      type="tel"
-                      placeholder="+1 (555) 000-0000"
-                      name="businessPhone"
-                      disabled={loading}
-                      required
-                    />
-                  </div>
-                </div>
-              )}
-
               <button
                 className={`
-                  w-full py-3 px-4 rounded-lg font-semibold text-white
+                  w-full py-3 px-4 rounded-full font-semibold text-white
                   transition-all duration-200 ease-in-out
-                  ${loading 
-                    ? 'bg-gray-400 cursor-not-allowed' 
-                    : 'bg-[#F85339] hover:bg-[#F85339]/90 active:scale-[0.98]'}
-                  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#F85339]/80
+                  ${
+                    loading
+                      ? "bg-gray-400 cursor-not-allowed"
+                      : "bg-primary-main hover:bg-primary-dark active:scale-[0.98]"
+                  }
+                  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-main
                 `}
                 type="submit"
                 disabled={loading}
@@ -291,4 +230,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default RegisterForm;
