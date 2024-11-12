@@ -9,10 +9,8 @@ import undrawImage from "../../../assets/images/register.svg";
 const RegisterForm = () => {
   const { user } = useSelector((state) => ({ ...state }));
   const [loading, setLoading] = useState(false);
-  const [role, setRole] = useState("user");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [withVendorRole, setWithVendorRole] = useState(false);
   const [redirect, setRedirect] = useState(null);
 
   const dispatch = useDispatch();
@@ -41,12 +39,14 @@ const RegisterForm = () => {
       toast.error("Passwords do not match!");
       return;
     }
-    const firstName = formData.get("firstName");
-    const lastName = formData.get("lastName");
 
+    data.userName = formData.get("userName");
     data.email = formData.get("email");
     data.password = password1;
-    data.name = `${firstName} ${lastName}`;
+    data.phoneNumber = formData.get("phoneNumber");
+    data.dateOfBirth = formData.get("dateOfBirth");
+    data.sex = formData.get("sex");
+    data.subscriptionType = formData.get("subscriptionType");
 
     try {
       setLoading(true);
@@ -61,7 +61,7 @@ const RegisterForm = () => {
         const redirecteURL = params.get("redirect");
         if (redirecteURL) navigate(redirecteURL);
         else navigate("/consultation");
-        toast.success(`Welcome ${res.data.user.name.split(" ")[0]}`);
+        toast.success(`Welcome ${res.data.user.userName}`);
       }
     } catch (error) {
       toast.error("Error creating an account");
@@ -95,35 +95,19 @@ const RegisterForm = () => {
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="firstName" className={labelClasses}>
-                    First Name
-                  </label>
-                  <input
-                    className={inputClasses}
-                    id="firstName"
-                    type="text"
-                    placeholder="John"
-                    name="firstName"
-                    disabled={loading}
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="lastName" className={labelClasses}>
-                    Last Name
-                  </label>
-                  <input
-                    className={inputClasses}
-                    id="lastName"
-                    type="text"
-                    placeholder="Doe"
-                    name="lastName"
-                    disabled={loading}
-                    required
-                  />
-                </div>
+              <div>
+                <label htmlFor="userName" className={labelClasses}>
+                  Username
+                </label>
+                <input
+                  className={inputClasses}
+                  id="userName"
+                  type="text"
+                  placeholder="john_doe"
+                  name="userName"
+                  disabled={loading}
+                  required
+                />
               </div>
 
               <div>
@@ -139,6 +123,68 @@ const RegisterForm = () => {
                   disabled={loading}
                   required
                 />
+              </div>
+
+              <div>
+                <label htmlFor="phoneNumber" className={labelClasses}>
+                  Phone Number
+                </label>
+                <input
+                  className={inputClasses}
+                  id="phoneNumber"
+                  type="text"
+                  placeholder="123-456-7890"
+                  name="phoneNumber"
+                  disabled={loading}
+                  required
+                />
+              </div>
+
+              <div>
+                <label htmlFor="dateOfBirth" className={labelClasses}>
+                  Date of Birth
+                </label>
+                <input
+                  className={inputClasses}
+                  id="dateOfBirth"
+                  type="date"
+                  name="dateOfBirth"
+                  disabled={loading}
+                  required
+                />
+              </div>
+
+              <div>
+                <label htmlFor="sex" className={labelClasses}>
+                  Sex
+                </label>
+                <select
+                  className={inputClasses}
+                  id="sex"
+                  name="sex"
+                  disabled={loading}
+                  required
+                >
+                  <option value="">Select...</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </div>
+
+              <div>
+                <label htmlFor="subscriptionType" className={labelClasses}>
+                  Subscription Type
+                </label>
+                <select
+                  className={inputClasses}
+                  id="subscriptionType"
+                  name="subscriptionType"
+                  disabled={loading}
+                  required
+                >
+                  <option value="One-time">One-time</option>
+                  <option value="Premium">Premium</option>
+                </select>
               </div>
 
               <div>
@@ -186,7 +232,9 @@ const RegisterForm = () => {
                   <button
                     type="button"
                     className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
-                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                    onClick={() =>
+                      setShowConfirmPassword(!showConfirmPassword)
+                    }
                   >
                     {showConfirmPassword ? (
                       <FaEyeSlash size={20} />

@@ -81,9 +81,9 @@ function App() {
       element: <ProfessionalLayout />,
       children: [
         { index: true, element: <Home /> },
-        { path: "auth/professional/login", element: <ProfessionalLogin /> },
+        { path: "login", element: <ProfessionalLogin /> },
         {
-          path: "auth/professional/register",
+          path: "register",
           element: <RegisterProfessional />,
         },
       ],
