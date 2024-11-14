@@ -46,7 +46,7 @@ const Navbar = () => {
         className={`container bg-white fixed mx-auto flex items-center justify-between py-4 px-4 transition-all duration-300 `}
       >
         <Link className="text-2xl font-bold flex align-middle items-center gap-2">
-          <img src={logo} alt="Logo" className="w-10 h-10" /> Sex-Wise
+          <img src={logo} alt="Logo" className="w-10 h-10" /> SexWise
         </Link>
 
         {/* Desktop Menu */}

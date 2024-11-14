@@ -3,6 +3,7 @@ import { apiClient } from "./config";
 export const apiSignUp = async (payload) => {
   return await apiClient.post(`/register`, payload);
 };
+
 export const apiLogin = async (payload) => {
   return await apiClient.post("/login", payload);
 };
@@ -21,3 +22,11 @@ export const getUsers = async () => {
 export const apiLogout = async () => {
   return await apiClient.post("/logout");
 };
+
+// -------Professional--------
+export const apiRegisterProfessional = async (payload) => {
+  return await apiClient.post(`/register/professional`, payload);
+}
+export const apiLoginProfessional = async (payload) => {
+  return await apiClient.post(`/register/professional`, payload);
+}
