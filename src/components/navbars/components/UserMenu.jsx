@@ -47,7 +47,7 @@ const UserMenu = ({ user }) => {
 
       {/* Dropdown menu */}
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg">
+        <div className="absolute z-50 right-0 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg">
           <ul className="py-2">
             <Link to="/dashboard">
               <li className="px-4 py-2 hover:bg-gray-100">My Dashboard</li>

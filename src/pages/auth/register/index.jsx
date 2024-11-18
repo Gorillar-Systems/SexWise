@@ -50,6 +50,7 @@ const RegisterForm = () => {
 
     try {
       setLoading(true);
+      console.log(data);
       const res = await apiSignUp(data);
       if (res.status === 201 || res.status === 200) {
         window.localStorage.setItem("sexwiseUser", JSON.stringify(res.data));
@@ -82,11 +83,11 @@ const RegisterForm = () => {
   const labelClasses = "block text-gray-700 font-medium mb-2";
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center">
       <div className="container mx-auto px-4 py-8">
-        <div className="flex flex-col md:flex-row gap-8 items-center justify-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           {/* Left side - Registration Form */}
-          <div className="w-full md:w-1/2 max-w-xl bg-white rounded-2xl shadow-xl p-8">
+          <div className="bg-white rounded-2xl shadow-xl p-8">
             <div className="text-center mb-8">
               <h2 className="text-3xl font-bold text-gray-900">Sign Up</h2>
               <p className="text-gray-500 mt-2">
@@ -95,96 +96,99 @@ const RegisterForm = () => {
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="userName" className={labelClasses}>
-                  Username
-                </label>
-                <input
-                  className={inputClasses}
-                  id="userName"
-                  type="text"
-                  placeholder="john_doe"
-                  name="userName"
-                  disabled={loading}
-                  required
-                />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="userName" className={labelClasses}>
+                    Username
+                  </label>
+                  <input
+                    className={inputClasses}
+                    id="userName"
+                    type="text"
+                    placeholder="john_doe"
+                    name="userName"
+                    disabled={loading}
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email" className={labelClasses}>
+                    Email
+                  </label>
+                  <input
+                    className={inputClasses}
+                    id="email"
+                    type="email"
+                    placeholder="john@example.com"
+                    name="email"
+                    disabled={loading}
+                    required
+                  />
+                </div>
               </div>
 
-              <div>
-                <label htmlFor="email" className={labelClasses}>
-                  Email
-                </label>
-                <input
-                  className={inputClasses}
-                  id="email"
-                  type="email"
-                  placeholder="john@example.com"
-                  name="email"
-                  disabled={loading}
-                  required
-                />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="phoneNumber" className={labelClasses}>
+                    Phone Number
+                  </label>
+                  <input
+                    className={inputClasses}
+                    id="phoneNumber"
+                    type="text"
+                    placeholder="123-456-7890"
+                    name="phoneNumber"
+                    disabled={loading}
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="dateOfBirth" className={labelClasses}>
+                    Date of Birth
+                  </label>
+                  <input
+                    className={inputClasses}
+                    id="dateOfBirth"
+                    type="date"
+                    name="dateOfBirth"
+                    disabled={loading}
+                    required
+                  />
+                </div>
               </div>
 
-              <div>
-                <label htmlFor="phoneNumber" className={labelClasses}>
-                  Phone Number
-                </label>
-                <input
-                  className={inputClasses}
-                  id="phoneNumber"
-                  type="text"
-                  placeholder="123-456-7890"
-                  name="phoneNumber"
-                  disabled={loading}
-                  required
-                />
-              </div>
-
-              <div>
-                <label htmlFor="dateOfBirth" className={labelClasses}>
-                  Date of Birth
-                </label>
-                <input
-                  className={inputClasses}
-                  id="dateOfBirth"
-                  type="date"
-                  name="dateOfBirth"
-                  disabled={loading}
-                  required
-                />
-              </div>
-
-              <div>
-                <label htmlFor="sex" className={labelClasses}>
-                  Sex
-                </label>
-                <select
-                  className={inputClasses}
-                  id="sex"
-                  name="sex"
-                  disabled={loading}
-                  required
-                >
-                  <option value="">Select...</option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                </select>
-              </div>
-
-              <div>
-                <label htmlFor="subscriptionType" className={labelClasses}>
-                  Subscription Type
-                </label>
-                <select
-                  className={inputClasses}
-                  id="subscriptionType"
-                  name="subscriptionType"
-                  disabled={loading}
-                  required
-                >
-                  <option value="One-time">One-time</option>
-                  <option value="Premium">Premium</option>
-                </select>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="sex" className={labelClasses}>
+                    Sex
+                  </label>
+                  <select
+                    className={inputClasses}
+                    id="sex"
+                    name="sex"
+                    disabled={loading}
+                    required
+                  >
+                    <option value="">Select...</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                  </select>
+                </div>
+                <div>
+                  <label htmlFor="subscriptionType" className={labelClasses}>
+                    Subscription Type
+                  </label>
+                  <select
+                    className={inputClasses}
+                    id="subscriptionType"
+                    name="subscriptionType"
+                    disabled={loading}
+                    required
+                  >
+                    <option value="One-time">One-time</option>
+                    <option value="Premium">Premium</option>
+                  </select>
+                </div>
               </div>
 
               <div>
@@ -246,16 +250,11 @@ const RegisterForm = () => {
               </div>
 
               <button
-                className={`
-                  w-full py-3 px-4 rounded-full font-semibold text-white
-                  transition-all duration-200 ease-in-out
-                  ${
-                    loading
-                      ? "bg-gray-400 cursor-not-allowed"
-                      : "bg-primary-main hover:bg-primary-dark active:scale-[0.98]"
-                  }
-                  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-main
-                `}
+                className={`w-full py-3 px-4 rounded-full font-semibold text-white transition-all duration-200 ease-in-out ${
+                  loading
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-primary-main hover:bg-primary-dark active:scale-[0.98]"
+                } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-main`}
                 type="submit"
                 disabled={loading}
               >
@@ -265,11 +264,11 @@ const RegisterForm = () => {
           </div>
 
           {/* Right side - Image */}
-          <div className="hidden md:block w-1/2 max-w-xl bg-white rounded-2xl shadow-xl p-8">
+          <div className="hidden md:block">
             <img
               src={undrawImage}
               alt="Registration illustration"
-              className="rounded-2xl object-cover"
+              className="rounded-2xl object-cover h-[70vh] w-full"
             />
           </div>
         </div>

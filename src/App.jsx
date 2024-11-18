@@ -20,26 +20,27 @@ import Consultation from "./pages/consultation";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { USER } from "./constants";
+import ProfessionalHome from "./pages/professional/home";
 
 function App() {
   const [user, setUser] = useState({});
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setUser(USER);
-    dispatch({
-      type: "LOGGED_IN_USER",
-      payload: USER,
-    });
-    // const storedUser = JSON.parse(localStorage.getItem("sexwiseUser"));
-    // console.log(storedUser);
-    // if (storedUser) {
-    //   setUser(storedUser.user);
-    //   dispatch({
-    //     type: "LOGGED_IN_USER",
-    //     payload: storedUser.user,
-    //   });
-    // }
+    // setUser(USER);
+    // dispatch({
+    //   type: "LOGGED_IN_USER",
+    //   payload: USER,
+    // });
+    const storedUser = JSON.parse(localStorage.getItem("sexwiseUser"));
+    console.log(storedUser);
+    if (storedUser) {
+      setUser(storedUser.user);
+      dispatch({
+        type: "LOGGED_IN_USER",
+        payload: storedUser.user,
+      });
+    }
   }, [dispatch]);
 
   const router = createBrowserRouter([
@@ -52,16 +53,17 @@ function App() {
         { path: "auth/login", element: <Login /> },
         { path: "auth/register", element: <Register /> },
         { path: "auth/forgot-password", element: <ForgotPassword /> },
+        {
+          path: "/consultation",
+          element: (
+            <ClientRoute>
+              <Consultation />
+            </ClientRoute>
+          ),
+        },
       ],
     },
-    {
-      path: "/consultation",
-      element: (
-        <ClientRoute>
-          <Consultation />
-        </ClientRoute>
-      ),
-    },
+    
     {
       path: "/dashboard",
       element: (
@@ -80,7 +82,7 @@ function App() {
       path: "/professional",
       element: <ProfessionalLayout />,
       children: [
-        { index: true, element: <Home /> },
+        { index: true, element: <ProfessionalHome/> },
         { path: "login", element: <ProfessionalLogin /> },
         {
           path: "register",

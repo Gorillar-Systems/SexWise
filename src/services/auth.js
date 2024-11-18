@@ -1,11 +1,11 @@
 import { apiClient } from "./config";
 
 export const apiSignUp = async (payload) => {
-  return await apiClient.post(`/register`, payload);
+  return await apiClient.post(`/users/register`, payload);
 };
 
 export const apiLogin = async (payload) => {
-  return await apiClient.post("/login", payload);
+  return await apiClient.post("/users/login", payload);
 };
 export const generateToken = async (payload) => {
   return await apiClient.post("/auth/token", payload);

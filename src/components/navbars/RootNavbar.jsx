@@ -43,7 +43,7 @@ const Navbar = () => {
     >
       <nav
         ref={navbarRef}
-        className={`container bg-white fixed mx-auto flex items-center justify-between py-4 px-4 transition-all duration-300 `}
+        className={` bg-white fixed w-full mx-auto flex items-center justify-between py-4 px-20 transition-all duration-300 `}
       >
         <Link className="text-2xl font-bold flex align-middle items-center gap-2">
           <img src={logo} alt="Logo" className="w-10 h-10" /> SexWise
