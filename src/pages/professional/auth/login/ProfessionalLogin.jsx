@@ -21,7 +21,7 @@ const ProfessionalLogin = () => {
   const location = useLocation();
 
   useEffect(() => {
-    if (user) navigate(redirect || "/");
+    if (user && user.role === "professional") navigate(redirect || "/");
   }, [user]);
 
   const params = new URLSearchParams(location.search);

@@ -25,7 +25,7 @@ export const apiLogout = async () => {
 
 // -------Professional--------
 export const apiRegisterProfessional = async (payload) => {
-  return await apiClient.post(`/register/professional`, payload);
+  return await apiClient.post(`/professionals/register`, payload);
 }
 export const apiLoginProfessional = async (payload) => {
   return await apiClient.post(`/register/professional`, payload);

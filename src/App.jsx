@@ -32,7 +32,7 @@ function App() {
     //   type: "LOGGED_IN_USER",
     //   payload: USER,
     // });
-    const storedUser = JSON.parse(localStorage.getItem("sexwiseUser"));
+    const storedUser = JSON.parse(localStorage.getItem("sexWiseUser"));
     console.log(storedUser);
     if (storedUser) {
       setUser(storedUser.user);

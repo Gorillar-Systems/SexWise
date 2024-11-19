@@ -10,6 +10,8 @@ const UserMenu = ({ user }) => {
   const dispatch = useDispatch();
   const menuRef = useRef(null); // Ref to track the dropdown
 
+  console.log(user);
+
   // Handle logout
   const handleLogout = () => {
     window.localStorage.removeItem("sexwiseUser");
@@ -41,7 +43,7 @@ const UserMenu = ({ user }) => {
         onClick={() => setIsOpen(!isOpen)} // Toggle dropdown on click
       >
         <FaRegUserCircle />
-        <p>{user.name}</p>
+        <p>{user.userName}</p>
         {isOpen ? <FaChevronUp /> : <FaChevronDown />}
       </button>
 

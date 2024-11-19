@@ -1,7 +1,7 @@
 import { apiClient } from "./config";
 
 export const apiProfessionalSignUp = async (payload) => {
-  return await apiClient.post(`/register`, payload);
+  return await apiClient.post(`/professionals/register`, payload);
 };
 export const apiProfessionalLogin = async (payload) => {
   return await apiClient.post("/login", payload);

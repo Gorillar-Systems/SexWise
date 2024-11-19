@@ -48,7 +48,7 @@ const ProfessionalNavbar = () => {
 
         {/* Desktop Menu */}
         <div className={`md:flex space-x-8 ${isOpen ? "block" : "hidden"}`}>
-          {user ? (
+          {user && user?.role === "professional" ? (
             // If user is logged in, show Dashboard, Jobs, and Logout
             <>
               <NavLink
