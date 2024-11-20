@@ -53,7 +53,7 @@ const RegisterProfessional = () => {
           type: "LOGGED_IN_USER",
           payload: res.data.user,
         });
-        navigate("/professional");
+        navigate("/dashboard/professional/appointments");
         toast.success(`Welcome ${res.data.user.fullName}`);
       }
     } catch (error) {

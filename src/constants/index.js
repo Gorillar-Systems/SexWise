@@ -32,3 +32,16 @@ export const CLIENT_SIDEBAR_LINKS = [
     icon: FaRegCalendarAlt,
   },
 ];
+
+export const PROFESSIONAL_SIDEBAR_LINKS = [
+  {
+    link: "My Appointments",
+    path: "/dashboard/professional/appointments",
+    icon: FaRegCalendarAlt,
+  },
+  {
+    link: "Consultations",
+    path: "/dashboard/professional/consultations",
+    icon: FaRegCalendarAlt,
+  },
+];

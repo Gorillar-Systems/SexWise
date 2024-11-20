@@ -1,9 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import professionalBg from "../../../assets/images/professionalBg.jpg";
+import { useSelector } from "react-redux";
 
 const ProfessionalHome = () => {
   const navigate = useNavigate();
+
+  const {user} = useSelector((state) => ({ ...state }));
 
   return (
     <div
@@ -30,15 +33,15 @@ const ProfessionalHome = () => {
 
         {/* Call to Action Buttons */}
         <div className="mt-10 flex flex-col md:flex-row gap-6">
-          <button
-            onClick={() => navigate("/professional/signup")}
-            className="px-6 py-3 bg-white text-primary-main hover:bg-gray-200 font-semibold rounded-lg shadow-md transition transform hover:scale-105"
+          {!user&&<button
+            onClick={() => navigate("/professional/register")}
+            className="px-6 py-3 bg-white text-primary-main hover:bg-gray-200 font-semibold rounded-full shadow-md transition transform hover:scale-105"
           >
             Sign Up as a Professional
-          </button>
+          </button>}
           <button
-            onClick={() => navigate("/jobs")}
-            className="px-6 py-3 bg-primary-main hover:bg-primary-dark font-semibold rounded-lg shadow-md transition transform hover:scale-105"
+            onClick={() => navigate("/dashboard/professional/consultations")}
+            className="px-6 py-3 bg-primary-main hover:bg-primary-dark font-semibold rounded-full shadow-md transition transform hover:scale-105"
           >
             Find Jobs
           </button>
@@ -46,20 +49,20 @@ const ProfessionalHome = () => {
 
         {/* Benefits Section */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="p-6 bg-white rounded-lg shadow-md text-gray-700">
-            <h3 className="text-xl font-semibold text-blue-600 mb-2">Flexible Opportunities</h3>
+          <div className="p-6 bg-white rounded-3xl shadow-md text-gray-700">
+            <h3 className="text-xl font-semibold text-gray-700 mb-2">Flexible Opportunities</h3>
             <p>
               Choose jobs that suit your schedule and expertise. Work on your terms, when you want.
             </p>
           </div>
-          <div className="p-6 bg-white rounded-lg shadow-md text-gray-700">
-            <h3 className="text-xl font-semibold text-blue-600 mb-2">Diverse Clients</h3>
+          <div className="p-6 bg-white rounded-3xl shadow-md text-gray-700">
+            <h3 className="text-xl font-semibold text-gray-700 mb-2">Diverse Clients</h3>
             <p>
               Connect with clients from various backgrounds looking for professional guidance.
             </p>
           </div>
-          <div className="p-6 bg-white rounded-lg shadow-md text-gray-700">
-            <h3 className="text-xl font-semibold text-blue-600 mb-2">Grow Your Career</h3>
+          <div className="p-6 bg-white rounded-3xl shadow-md text-gray-700">
+            <h3 className="text-xl font-semibold text-gray-700 mb-2">Grow Your Career</h3>
             <p>
               Gain visibility, expand your portfolio, and make a meaningful impact on people's lives.
             </p>

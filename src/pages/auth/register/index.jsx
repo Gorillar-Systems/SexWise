@@ -53,7 +53,7 @@ const RegisterForm = () => {
       console.log(data);
       const res = await apiSignUp(data);
       if (res.status === 201 || res.status === 200) {
-        window.localStorage.setItem("sexwiseUser", JSON.stringify(res.data));
+        window.localStorage.setItem("sexWiseUser", JSON.stringify(res.data));
         dispatch({
           type: "LOGGED_IN_USER",
           payload: res.data.user,

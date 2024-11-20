@@ -11,7 +11,7 @@ const ClientSidebar = () => {
 
   const navigate = useNavigate();
   const handleLogout = () => {
-    window.localStorage.removeItem("sexwiseUser");
+    window.localStorage.removeItem("sexWiseUser");
     dispatch({
       type: "LOGOUT",
       payload: null,

@@ -14,7 +14,7 @@ const UserMenu = ({ user }) => {
 
   // Handle logout
   const handleLogout = () => {
-    window.localStorage.removeItem("sexwiseUser");
+    window.localStorage.removeItem("sexWiseUser");
     dispatch({
       type: "LOGOUT",
       payload: null,
@@ -26,7 +26,7 @@ const UserMenu = ({ user }) => {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setIsOpen(false); // Close dropdown if clicked outside
+        setIsOpen(false); 
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -40,10 +40,10 @@ const UserMenu = ({ user }) => {
       {/* User button */}
       <button
         className="flex align-middle gap-2 items-center text-gray-800"
-        onClick={() => setIsOpen(!isOpen)} // Toggle dropdown on click
+        onClick={() => setIsOpen(!isOpen)} 
       >
         <FaRegUserCircle />
-        <p>{user.userName}</p>
+        <p>{user.userName || user.fullName}</p>
         {isOpen ? <FaChevronUp /> : <FaChevronDown />}
       </button>
 

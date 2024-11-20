@@ -21,6 +21,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { USER } from "./constants";
 import ProfessionalHome from "./pages/professional/home";
+import ProfessionalDashboardLayout from "./layouts/ProfessionalDashboardLayout";
 
 function App() {
   const [user, setUser] = useState({});
@@ -94,7 +95,7 @@ function App() {
       path: "/dashboard/professional",
       element: (
         <ProfessionalRoute>
-          <ProfessionalLayout />
+          <ProfessionalDashboardLayout />
         </ProfessionalRoute>
       ),
       children: [
