@@ -33,7 +33,6 @@ const ProfessionalLogin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Logic to handle login goes here (e.g send credentials to server)
     let data = {};
     const formData = new FormData(e.target);
 
