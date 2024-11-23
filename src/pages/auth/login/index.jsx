@@ -78,7 +78,7 @@ const Login = () => {
   `;
 
   return (
-    <div className="flex flex-col md:flex-row min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+    <div className="flex flex-col pt-20 md:flex-row min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Left side - Login Form */}
       <div className="w-full md:w-1/2 flex items-center justify-center p-8">
         <div className="w-full max-w-md space-y-8">
@@ -218,7 +218,7 @@ const Login = () => {
           <img
             src={undrawImage}
             alt="Login illustration"
-            className="w-full h-auto rounded-2xl shadow-2xl"
+            className="w-full h-auto rounded-2xl "
           />
         </div>
       </div>
