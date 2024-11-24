@@ -7,14 +7,14 @@ export const USER = {
 };
 
 export const NAVLINKS = [
-  {
-    link: "Blog",
-    path: "/blog",
-  },
-  {
-    link: "About",
-    path: "/about",
-  },
+  // {
+  //   link: "Blog",
+  //   path: "/blog",
+  // },
+  // {
+  //   link: "About",
+  //   path: "/about",
+  // },
   {
     link: "Book Consultation",
     path: "/consultation",

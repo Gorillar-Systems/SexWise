@@ -9,7 +9,7 @@ const ProfessionalRoute = ({ children }) => {
     <div>{children}</div>
   ) : (
     <LoadingToRedirect
-      to="/auth/professional/login"
+      to="/professional/register"
       message="You are not logged in as a professional."
     />
   );
