@@ -83,13 +83,13 @@ const RegisterForm = () => {
   const labelClasses = "block text-gray-700 font-medium mb-2";
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center">
+    <div className="min-h-screen bg-gradient-to-br text-sm pt-32 from-gray-50 to-gray-100 flex items-center">
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           {/* Left side - Registration Form */}
-          <div className="bg-white rounded-2xl shadow-xl p-8">
+          <div className=" rounded-2xl p-8">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-gray-900">Sign Up</h2>
+              <h2 className="text-3xl font-bold text-[#5C1D3A]">Sign Up</h2>
               <p className="text-gray-500 mt-2">
                 Create your account to get started
               </p>
@@ -236,9 +236,7 @@ const RegisterForm = () => {
                   <button
                     type="button"
                     className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
-                    onClick={() =>
-                      setShowConfirmPassword(!showConfirmPassword)
-                    }
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                   >
                     {showConfirmPassword ? (
                       <FaEyeSlash size={20} />

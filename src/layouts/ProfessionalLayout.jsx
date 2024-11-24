@@ -4,8 +4,10 @@ import ProfessionalNavbar from "../components/navbars/ProfessionalNavbar";
 const ProfessionalLayout = () => {
   return (
     <div>
-      <ProfessionalNavbar />
-      <Outlet />
+      <div className="flex flex-col gap-6 ">
+        <ProfessionalNavbar />
+        <Outlet />
+      </div>
     </div>
   );
 };

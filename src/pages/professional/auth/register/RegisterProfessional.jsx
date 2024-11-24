@@ -33,10 +33,10 @@ const RegisterProfessional = () => {
     data.fullName = formData.get("fullName");
     data.email = formData.get("email");
     data.password = password1;
-    data.phoneNumber = formData.get("phoneNumber");
-    data.sex = formData.get("sex");
-    data.dateOfBirth = formData.get("dateOfBirth");
-    data.licenseNumber = formData.get("licenseNumber");
+    data.phoneNumber = formData.get("phoneNumber") || "0244883678";
+    data.sex = formData.get("sex") || "female";
+    data.dateOfBirth = formData.get("dateOfBirth") || "1994-05-05";
+    data.licenseNumber = formData.get("licenseNumber") || 22565156;
     data.services = Array.from(formData.getAll("services"));
     // data.mobileMoneyNumber = formData.get("mobileMoneyNumber");
     // data.bankName = formData.get("bankName");
@@ -75,10 +75,12 @@ const RegisterProfessional = () => {
   const labelClasses = "block text-gray-700 font-medium mb-2";
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
-      <div className="container max-w-4xl bg-white rounded-2xl shadow-xl p-8">
+    <div className="min-h-screen bg-gradient-to-br pt-32 from-gray-50 to-gray-100 flex items-center justify-center">
+      <div className="container max-w-4xl bg-white rounded-2xl  p-8">
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-900">Sign Up as a Professional</h2>
+          <h2 className="text-3xl font-bold text-gray-900">
+            Sign Up as a Professional
+          </h2>
           <p className="text-gray-500 mt-2">
             Create your professional account to start offering services
           </p>
@@ -133,7 +135,7 @@ const RegisterProfessional = () => {
                 required
               />
             </div>
-            <div>
+            {/* <div>
               <label htmlFor="sex" className={labelClasses}>
                 Sex
               </label>
@@ -148,8 +150,8 @@ const RegisterProfessional = () => {
                 <option value="male">Male</option>
                 <option value="female">Female</option>
               </select>
-            </div>
-            <div>
+            </div> */}
+            {/* <div>
               <label htmlFor="dateOfBirth" className={labelClasses}>
                 Date of Birth
               </label>
@@ -162,7 +164,7 @@ const RegisterProfessional = () => {
                 disabled={loading}
                 required
               />
-            </div>
+            </div> */}
           </div>
 
           {/* License Number and Services */}
@@ -210,55 +212,6 @@ const RegisterProfessional = () => {
             </div>
           </div>
 
-          {/* Payment Details */}
-          <div>
-            <h3 className="text-lg font-medium text-gray-700 mb-4">
-              Payment Details
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label htmlFor="mobileMoneyNumber" className={labelClasses}>
-                  Mobile Money Number
-                </label>
-                <input
-                  className={inputClasses}
-                  id="mobileMoneyNumber"
-                  type="text"
-                  placeholder="Mobile Money Number"
-                  name="mobileMoneyNumber"
-                  disabled={loading}
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="bankName" className={labelClasses}>
-                  Bank Name
-                </label>
-                <input
-                  className={inputClasses}
-                  id="bankName"
-                  type="text"
-                  placeholder="Bank Name"
-                  name="bankName"
-                  disabled={loading}
-                />
-              </div>
-              <div>
-                <label htmlFor="accountNumber" className={labelClasses}>
-                  Bank Account Number
-                </label>
-                <input
-                  className={inputClasses}
-                  id="accountNumber"
-                  type="text"
-                  placeholder="Account Number"
-                  name="accountNumber"
-                  disabled={loading}
-                />
-              </div>
-            </div>
-          </div>
-
           {/* Password Fields */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
@@ -280,7 +233,11 @@ const RegisterProfessional = () => {
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
                   onClick={() => setShowPassword(!showPassword)}
                 >
-                  {showPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
+                  {showPassword ? (
+                    <FaEyeSlash size={20} />
+                  ) : (
+                    <FaEye size={20} />
+                  )}
                 </button>
               </div>
             </div>
