@@ -55,7 +55,7 @@ const BecomeProfessional = () => {
         </div>
         <div className="text-center mt-12">
           <Link
-            to="/become-a-professional"
+            to="/professional"
             className="px-8 py-3 bg-primary-light text-white font-semibold rounded-lg shadow hover:bg-primary-dark transition duration-300"
           >
             Get Started Today

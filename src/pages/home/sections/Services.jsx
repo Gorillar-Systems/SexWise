@@ -42,7 +42,7 @@ const Services = () => {
           const FeatureIcon = feature.icon;
           return (
             <Link
-              to={feature.link}
+              to="/auth/register"
               key={index}
               className="p-6 flex flex-col h-auto justify-between gap-4 rounded-3xl shadow-lg bg-gradient-to-br from-primary-light to-primary-main text-white hover:bg-gradient-to-bl hover:from-primary-main hover:to-primary-dark transition-all duration-300 transform hover:scale-105"
             >

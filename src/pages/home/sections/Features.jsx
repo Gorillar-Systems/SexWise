@@ -71,7 +71,7 @@ const Features = () => {
               </p>
               <div className="text-center">
                 <Link
-                  to="/features"
+                  to="/auth/register"
                   className="inline-block px-6 py-2 bg-primary-light text-white font-semibold rounded-full shadow hover:bg-primary-dark transition duration-300"
                 >
                   Learn More

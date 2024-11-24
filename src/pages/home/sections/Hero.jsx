@@ -26,9 +26,12 @@ const Hero = () => {
           >
             Get Started
           </Link>
-          <button className="px-6 py-3 bg-white text-primary-main hover:text-primary-dark text-xl font-semibold rounded-full shadow-md transition-transform transform hover:scale-105">
+          <Link
+            to="/auth/register"
+            className="px-6 py-3 bg-white text-primary-main hover:text-primary-dark text-xl font-semibold rounded-full shadow-md transition-transform transform hover:scale-105"
+          >
             Learn More
-          </button>
+          </Link>
         </div>
       </div>
     </div>
